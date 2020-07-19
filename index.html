@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>mosaic colorfull</title>
+</head>
+<body>
+
+    <!-- 
+        thanks to 
+        Online Tutorials
+        https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog 
+    -->
+
+    <div class="container"></div>
+
+
+    <script>
+        for(let i = 1; i <= 1000; i++ ){
+            //500 tane box oluşturacak, 
+            //box lara box class ı verecek, 
+            //bunları container içine koyacak
+            const box = document.createElement('div');
+            box.classList.add('box');
+            // box.classList.add('flip-vertical-right');
+            document.querySelector('.container').appendChild(box)
+        }
+
+
+    const randomColorBlock = document.querySelectorAll('.box');
+
+    function addColors(){
+        randomColorBlock.forEach((e) => {
+            e.style.backgroundColor = randomColor();
+        })
+    }
+
+    
+    function randomColor(){
+            let chars = "1234567890abcdef"
+            let colorLength = 6;
+            let color = "";
+
+            for(let i = 1; i <= colorLength; i++){
+                let randomColor = Math.floor(Math.random() * chars.length);
+                color += chars.substring(randomColor, randomColor+1)
+                //chars içinden rastgele karakter seçip color a atıyor, func ı çağır console a bak
+                // console.log(color)
+            }
+        return "#" + color
+    }
+
+    // addColors();
+    setInterval(() => {
+        randomColorBlock.forEach((e) => {
+            e.style.backgroundColor = randomColor();
+        })
+    }, 800);
+
+
+    </script>
+</body>
+</html>
